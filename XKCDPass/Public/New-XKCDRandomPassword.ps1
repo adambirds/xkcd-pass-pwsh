@@ -78,7 +78,7 @@ Function New-XKCDRandomPassword {
     )
 
     PROCESS {
-        $Words = Get-RandomWordsFromWordList -WordListFilePath $PSScriptRoot\Static\wordlist.txt -NumberOfWords $NumWords -MinWordLength $MinWordLength -MaxWordLength $MaxWordLength
+        $Words = Get-RandomWordsFromWordList -WordListFilePath $PSScriptRoot\..\Static\wordlist.txt -NumberOfWords $NumWords -MinWordLength $MinWordLength -MaxWordLength $MaxWordLength
         [string]$Password = ""
         ForEach ($Word in $Words) {
             $Password += (Get-Culture).TextInfo.ToTitleCase($Word)

@@ -1,6 +1,6 @@
 @{
-    # RootModule = ''
-    ModuleVersion = '1.0.0'
+    RootModule = 'XKCDPass.psm1'
+    ModuleVersion = '0.0.4'
     # CompatiblePSEditions = @()
     GUID = 'b35827fe-7ce3-4156-a19e-b97fc7338b55'
     Author = 'Adam Birds'
