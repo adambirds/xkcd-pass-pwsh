@@ -12,7 +12,19 @@
 ![License](https://img.shields.io/github/license/adambirds/xkcd-pass-pwsh.svg)
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/adambirds)
 
-PowerShell Module to Generate XKCD Style Passwords
+XKCDPass is a PowerShell module that provides a flexible and scriptable password generator which generates strong passphrases, inspired by [XKCD 936][xkcd].
+
+The command which is exported from this module is `Get-XKCDRandomPassword`.
+
+Whilst this password generator is inspired by [XKCD 936][xkcd], its defaults have been configured in a way which gives this tool the most compatibility out of the box with the majority of services we use passwords for today. The defaults that we have set are:
+* The password contains 4 words between 5 and 9 characters.
+* The first letter of each word is capitalized.
+* The passphrase is ended with two random digits.
+
+This allows the password generator to provide passwords by default which will be strong, easy to remember, difficult to brute-force and still pass the usual requirements of at least one upper-case letter, one lower-case letter and at least 1 digit.
+
+[xkcd]: https://xkcd.com/936/
+![](https://imgs.xkcd.com/comics/password_strength.png)
 
 ## Support
 For support using this bot, please join our [official support server](https://discord.gg/f5veJaa4ZX) on [Discord](https://discord.com).
