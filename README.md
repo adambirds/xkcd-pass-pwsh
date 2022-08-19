@@ -1,3 +1,3 @@
-# New-XKCDPassword PowerShell Module
+# Get-XKCDPassword PowerShell Module
 
 PowerShell Module to Generate XKCD Style Passwords

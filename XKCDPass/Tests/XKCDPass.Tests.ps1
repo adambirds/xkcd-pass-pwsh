@@ -4,6 +4,8 @@ Describe "$Module Module Tests" {
     BeforeAll {
         $ModulePath = Split-Path -Parent $PSScriptRoot
         Write-Output $ModulePath
+        $Module = "XKCDPass"
+        Write-Output $Module
     }
 
     Context "Module Setup" {
@@ -16,8 +18,8 @@ Describe "$Module Module Tests" {
             ("{0}\{1}.psd1" -f $ModulePath, $Module) | Should -Exist
         }
 
-        It "Public folder has the public function New-XKCDRandomPassword.ps1" {
-            ("{0}\Public\New-XKCDRandomPassword.ps1" -f $ModulePath) | Should -Exist
+        It "Public folder has the public function Get-XKCDRandomPassword.ps1" {
+            ("{0}\Public\Get-XKCDRandomPassword.ps1" -f $ModulePath) | Should -Exist
         }
 
         It "Private folder has the private function Get-RandomWordsFromWordList.ps1" {
@@ -33,10 +35,10 @@ Describe "$Module Module Tests" {
     }
 
     $PublicFunctions = @(
-        "New-XKCDRandomPassword"
+        "Get-XKCDRandomPassword"
     )
 
-    Context "Testing Public Function $Function.ps1" -ForEach $PublicFunctions {
+    Context "Testing Public Function <$_>.ps1" -ForEach $PublicFunctions {
         It "Function $_.ps1 should exist" {
             ("{0}\Public\{1}.ps1" -f $ModulePath, $_) | Should -Exist
         }

@@ -1,4 +1,4 @@
-Function New-XKCDRandomPassword {
+Function Get-XKCDRandomPassword {
 <#
 .SYNOPSIS
     Creates a random password using an XKCD style password.
@@ -51,10 +51,10 @@ Function New-XKCDRandomPassword {
     Default: None
 
 .EXAMPLE
-    New-XKCDRandomPassword
+    Get-XKCDRandomPassword
 
 .EXAMPLE
-    New-XKCDRandomPassword -NumWords 4 -NumDigits 3 -MinWordLength 4 -MaxWordLength 6 -Separator _ -Suffix !
+    Get-XKCDRandomPassword -NumWords 4 -NumDigits 3 -MinWordLength 4 -MaxWordLength 6 -Separator _ -Suffix !
 
 .NOTES
     Author: Adam Birds

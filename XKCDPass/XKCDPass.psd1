@@ -1,6 +1,6 @@
 @{
     RootModule = 'XKCDPass.psm1'
-    ModuleVersion = '0.0.4'
+    ModuleVersion = '1.0.0'
     # CompatiblePSEditions = @()
     GUID = 'b35827fe-7ce3-4156-a19e-b97fc7338b55'
     Author = 'Adam Birds'
@@ -15,7 +15,7 @@
     # FormatsToProcess = @()
     # NestedModules = @()
     FunctionsToExport = @(
-        'New-XKCDRandomPassword'
+        'Get-XKCDRandomPassword'
     )
     CmdletsToExport = @()
     AliasesToExport = @()
@@ -23,13 +23,17 @@
     PrivateData = @{
         PSData = @{
             Tags = @(
-                'Password Generators',
+                'PasswordGenerators',
                 'XKCD'
             )
             LicenseUri = 'https://github.com/adambirds/xkcd-pass-pwsh/blob/main/LICENSE'
             ProjectUri = 'https://github.com/adambirds/xkcd-pass-pwsh'
-            IconUri = ''
-            ReleaseNotes = ''
+            IconUri = 'https://adbwebdesigns.co.uk/wp-content/uploads/2021/10/adb-web-designs-logo.png'
+            ReleaseNotes = '
+# 1.0.0
+
+* Initial release.
+            '
         }
     }
     HelpInfoURI = 'https://github.com/adambirds/xkcd-pass-pwsh'

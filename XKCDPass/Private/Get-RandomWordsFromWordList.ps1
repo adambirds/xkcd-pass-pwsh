@@ -1,4 +1,6 @@
 Function Get-RandomWordsFromWordList {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'MinWordLength', Justification = 'False positive as rule does not scan child scopes')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', 'MaxWordLength', Justification = 'False positive as rule does not scan child scopes')]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true, Position=0)]

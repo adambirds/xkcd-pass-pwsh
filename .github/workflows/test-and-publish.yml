@@ -1,0 +1,58 @@
+name: test-and-publish
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  test-job:
+    name: Test Module
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code.
+        uses: actions/checkout@v3
+
+      - name: Run Pester tests.
+        shell: pwsh
+        run: |
+          $paths = @(
+            '.\XKCDPass\Public\',
+            '.\XKCDPass\Private\'
+          )
+          Invoke-Pester -CodeCoverage $paths -CodeCoverageOutputFileFormat JaCoCo
+      
+      - name: Codecov Upload
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: true
+      
+      - name: Lint with PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Invoke-ScriptAnalyzer -Path .\XKCDPass\ -ExcludeRule .\XKCDPass\Tests\ -Recurse -Severity Warning -Outvariable Issues
+          $errors   = $Issues.Where({$_.Severity -eq 'Error'})
+          $warnings = $Issues.Where({$_.Severity -eq 'Warning'})
+          if ($errors) {
+              Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+          } else {
+              Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+          }
+  
+  publish-job:
+    name: Publish Module to PowerShell Gallery
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: test-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code.
+        uses: actions/checkout@v3
+      
+      - name: Build and Publish
+        env:
+          NUGET_KEY: ${{ secrets.NUGET_KEY }}
+        shell: pwsh
+        run: |
+          Publish-Module -Path ./XKCDPass -NugetApiKey $env:NUGET_KEY -Verbose
+      
